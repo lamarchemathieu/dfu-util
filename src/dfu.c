@@ -152,6 +152,8 @@ int dfu_get_status( struct dfu_if *dif, struct dfu_status *status )
         status->bStatus = buffer[0];
         if (dif->quirks & QUIRK_POLLTIMEOUT)
             status->bwPollTimeout = DEFAULT_POLLTIMEOUT;
+        else if (dif->quirks & QUIRK_TENPOLLTIMEOUT)
+            status->bwPollTimeout = DEFAULT_POLLTIMEOUT*20;
         else
             status->bwPollTimeout = ((0xff & buffer[3]) << 16) |
                                     ((0xff & buffer[2]) << 8)  |

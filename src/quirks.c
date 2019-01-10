@@ -53,5 +53,8 @@ uint16_t get_quirks(uint16_t vendor, uint16_t product, uint16_t bcdDevice)
 	    product == PRODUCT_TRANSIT)
 		quirks |= QUIRK_POLLTIMEOUT;
 
+	if (vendor == VENDOR_STM && product == PRODUCT_STM32L433)
+		quirks |= QUIRK_TENPOLLTIMEOUT;
+
 	return (quirks);
 }
